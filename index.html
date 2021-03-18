@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery/jquery-3.5.1.js"></script>
+   
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+    <title>Termosztát</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <div class="thermostat">
+                <table class="thermostatTable" id="">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h3>Nappali</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Hőmérséklet:</td>
+                            <td><input type="number" class="input targetTempInput" readonly value="23.5">°C</td>
+                        </tr>
+                        <tr>
+                            <td>Kézi Hőmérséklet:</td>
+                            <td><button class="tTempMinusButton">-</button>
+                                <input type="number" class="input targetTempInput" value="23.0" readonly>°C
+                                <button class="tTempPlusButton">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Üzemmód:</td>
+                            <td><input type="text" class="input textInput" readonly>
+                                <button class="adjustThermostatModeButton">Mode</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fűtés:</td>
+                            <td><input type="text" class="input textInput" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Program szerinti:</td>
+                            <td><input type="number" class="input targetTempInput" readonly>°C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <span style="display: none;">weekend</span>
+                    <h3 class="program">Program</h3>
+                    <button class="workdayButton">Hétköznap</button>
+                    <button class="weekendButton">Hétvége</button>
+                    <table class="autoTTempTable" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <th>Kezdő idő</th>
+                                <th>Záró idő</th>
+                                <th>Hőmérséklet</th>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeOne timeInput" type="time" step="" min=""
+                                        max="" value="06:00" id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeOne timeInput" type="time" min="" max=""
+                                        value="07:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempOne targetTempInput" type="number" min="1" max="28"
+                                        step="0.5" value="20.0" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeTwo timeInput" type="time" min="0" max=""
+                                        value="07:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeTwo timeInput" type="time" min="0" max=""
+                                        value="10:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempTwo targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeThree timeInput" type="time" min="0"
+                                        max="" value="10:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeThree timeInput" type="time" min="0" max=""
+                                        value="12:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempThree targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFour timeInput" type="time" min="0"
+                                        max="" value="12:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFour timeInput" type="time" min="0" max=""
+                                        value="17:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFour targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFive timeInput" type="time" min="0"
+                                        max="" value="17:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFive timeInput" type="time" min="0" max=""
+                                        value="23:59" readonly id="">
+                                </td>
+                                <td class="targetTempTD">
+                                    <button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFive targetTempInput" type="number" min="1" max="28" value=""
+                                        id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><button type="submit" class="autotTempSubmitButton">Mentés</button>
+                                    <button class="hideAutoTTempTable">Elrejt</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="thermostat">
+                <table class="thermostatTable" id="">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h3>Zoli Szoba</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Hőmérséklet:</td>
+                            <td><input type="number" class="input targetTempInput" readonly value="23.5">°C</td>
+                        </tr>
+                        <tr>
+                            <td>Kézi Hőmérséklet:</td>
+                            <td><button class="tTempMinusButton">-</button>
+                                <input type="number" class="input targetTempInput" value="23.0" readonly>°C
+                                <button class="tTempPlusButton">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Üzemmód:</td>
+                            <td><input type="text" class="input textInput" readonly>
+                                <button class="adjustThermostatModeButton">Mode</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fűtés:</td>
+                            <td><input type="text" class="input textInput" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Program szerinti:</td>
+                            <td><input type="number" class="input targetTempInput" readonly>°C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <span style="display: none;">weekend</span>
+                    <h3 class="program">Program</h3>
+                    <button class="workdayButton">Hétköznap</button>
+                    <button class="weekendButton">Hétvége</button>
+                    <table class="autoTTempTable" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <th>Kezdő idő</th>
+                                <th>Záró idő</th>
+                                <th>Hőmérséklet</th>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeOne timeInput" type="time" step="" min=""
+                                        max="" value="06:00" id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeOne timeInput" type="time" min="" max=""
+                                        value="07:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempOne targetTempInput" type="number" min="1" max="28"
+                                        step="0.5" value="20.0" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeTwo timeInput" type="time" min="0" max=""
+                                        value="07:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeTwo timeInput" type="time" min="0" max=""
+                                        value="10:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempTwo targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeThree timeInput" type="time" min="0"
+                                        max="" value="10:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeThree timeInput" type="time" min="0" max=""
+                                        value="12:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempThree targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFour timeInput" type="time" min="0"
+                                        max="" value="12:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFour timeInput" type="time" min="0" max=""
+                                        value="17:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFour targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFive timeInput" type="time" min="0"
+                                        max="" value="17:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFive timeInput" type="time" min="0" max=""
+                                        value="23:59" readonly id="">
+                                </td>
+                                <td class="targetTempTD">
+                                    <button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFive targetTempInput" type="number" min="1" max="28" value=""
+                                        id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><button type="submit" class="autotTempSubmitButton">Mentés</button>
+                                    <button class="hideAutoTTempTable">Elrejt</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="thermostat">
+                <table class="thermostatTable" id="">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h3>Nappali</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Hőmérséklet:</td>
+                            <td><input type="number" class="input targetTempInput" readonly value="23.5">°C</td>
+                        </tr>
+                        <tr>
+                            <td>Kézi Hőmérséklet:</td>
+                            <td><button class="tTempMinusButton">-</button>
+                                <input type="number" class="input targetTempInput" value="23.0" readonly>°C
+                                <button class="tTempPlusButton">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Üzemmód:</td>
+                            <td><input type="text" class="input textInput" readonly>
+                                <button class="adjustThermostatModeButton">Mode</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fűtés:</td>
+                            <td><input type="text" class="input textInput" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Program szerinti:</td>
+                            <td><input type="number" class="input targetTempInput" readonly>°C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <span style="display: none;">weekend</span>
+                    <h3 class="program">Program</h3>
+                    <button class="workdayButton">Hétköznap</button>
+                    <button class="weekendButton">Hétvége</button>
+                    <table class="autoTTempTable" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <th>Kezdő idő</th>
+                                <th>Záró idő</th>
+                                <th>Hőmérséklet</th>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeOne timeInput" type="time" step="" min=""
+                                        max="" value="06:00" id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeOne timeInput" type="time" min="" max=""
+                                        value="07:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempOne targetTempInput" type="number" min="1" max="28"
+                                        step="0.5" value="20.0" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeTwo timeInput" type="time" min="0" max=""
+                                        value="07:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeTwo timeInput" type="time" min="0" max=""
+                                        value="10:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempTwo targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeThree timeInput" type="time" min="0"
+                                        max="" value="10:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeThree timeInput" type="time" min="0" max=""
+                                        value="12:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempThree targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFour timeInput" type="time" min="0"
+                                        max="" value="12:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFour timeInput" type="time" min="0" max=""
+                                        value="17:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFour targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFive timeInput" type="time" min="0"
+                                        max="" value="17:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFive timeInput" type="time" min="0" max=""
+                                        value="23:59" readonly id="">
+                                </td>
+                                <td class="targetTempTD">
+                                    <button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFive targetTempInput" type="number" min="1" max="28" value=""
+                                        id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><button type="submit" class="autotTempSubmitButton">Mentés</button>
+                                    <button class="hideAutoTTempTable">Elrejt</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="thermostat">
+                <table class="thermostatTable" id="">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h3>Zoli Szoba</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Hőmérséklet:</td>
+                            <td><input type="number" class="input targetTempInput" readonly value="23.5">°C</td>
+                        </tr>
+                        <tr>
+                            <td>Kézi Hőmérséklet:</td>
+                            <td><button class="tTempMinusButton">-</button>
+                                <input type="number" class="input targetTempInput" value="23.0" readonly>°C
+                                <button class="tTempPlusButton">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Üzemmód:</td>
+                            <td><input type="text" class="input textInput" readonly>
+                                <button class="adjustThermostatModeButton">Mode</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fűtés:</td>
+                            <td><input type="text" class="input textInput" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Program szerinti:</td>
+                            <td><input type="number" class="input targetTempInput" readonly>°C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <span style="display: none;">weekend</span>
+                    <h3 class="program">Program</h3>
+                    <button class="workdayButton">Hétköznap</button>
+                    <button class="weekendButton">Hétvége</button>
+                    <table class="autoTTempTable" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <th>Kezdő idő</th>
+                                <th>Záró idő</th>
+                                <th>Hőmérséklet</th>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeOne timeInput" type="time" step="" min=""
+                                        max="" value="06:00" id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeOne timeInput" type="time" min="" max=""
+                                        value="07:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempOne targetTempInput" type="number" min="1" max="28"
+                                        step="0.5" value="20.0" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeTwo timeInput" type="time" min="0" max=""
+                                        value="07:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeTwo timeInput" type="time" min="0" max=""
+                                        value="10:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempTwo targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeThree timeInput" type="time" min="0"
+                                        max="" value="10:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeThree timeInput" type="time" min="0" max=""
+                                        value="12:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempThree targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFour timeInput" type="time" min="0"
+                                        max="" value="12:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFour timeInput" type="time" min="0" max=""
+                                        value="17:00" id=""></td>
+                                <td class="targetTempTD"><button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFour targetTempInput" type="number" min="1" max="28"
+                                        value="20" id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="timeInputTD"><input class="startTimeFive timeInput" type="time" min="0"
+                                        max="" value="17:00" readonly id="">
+                                </td>
+                                <td class="timeInputTD"><input class="endTimeFive timeInput" type="time" min="0" max=""
+                                        value="23:59" readonly id="">
+                                </td>
+                                <td class="targetTempTD">
+                                    <button class="autoTTempMinusButton" id="">-</button>
+                                    <input class="autoTTempFive targetTempInput" type="number" min="1" max="28" value=""
+                                        id="">°C
+                                    <button class="autoTTempPlusButton" id="">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><button type="submit" class="autotTempSubmitButton">Mentés</button>
+                                    <button class="hideAutoTTempTable">Elrejt</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+}
+body{
+    color: #dee2e6;
+    background-color: #212529;
+}
+
+.timeInput{
+    height: 15px;
+    width: 68px;
+    color: #dee2e6;
+    background-color: #343a40;
+    border: none;
+    padding: none;
+
+}
+.timeInputTD{
+    height: 15px;
+    width: 45px;
+    color: #dee2e6;
+}
+
+.targetTempInput{
+    height: 15px;
+    width: 27px;
+    text-align: center;
+    color: #dee2e6;
+    background-color: #343a40;
+    border: none;
+}
+.targetTempTD{
+    height: 15px;
+    width: 50 px;
+    color: #e0e1dd;
+}
+
+.textInput{
+    width: 45px;
+    border: none;
+    color: #dee2e6;
+    background-color: #343a40;
+}
+
+.thermostat {
+    border-style: solid;
+    color: rgb(50, 50, 78);
+    color: #dee2e6;
+    background-color: #495057;
+    box-shadow: 2px 3px rgb(50, 50, 78);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+
+
+
+
+.row {
+    display: flex;
+}
+
+.column {
+    width: flex 30%;
+}
+
+th {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+td {
+
+    text-align: center;
+    color: #dee2e6;
+    border-style: none;
+    border-color: #212529;
+    color: #dee2e6;
+    width: 125px;
+  
+    
+    background-color: #343a40;  
+    box-shadow: 1px 2px;
+
+    
+}
+
+table {
+    margin-left:  10px;
+    margin-right: 10px;
+    border-collapse:separate; 
+border-spacing: 0 1em;
+}
+
+.weekendButton{
+    float: right;
+}
+
+.autotTempSubmitButton{
+ float: left;
+}
+.hideAutoTTempTable{
+ float: right;
+}
+
